@@ -17,15 +17,19 @@ function App() {
     })
       .then((response) => {
         setRecipes(response.items)
-        console.log(response.items)
       })
       .catch(console.error)
   }, [])
-
   return (
     <div className="App">
       <h2>Recipes</h2>
-      <ul>{recipes.map(recipe => <li>{recipe.fields.title}</li>)}</ul>
+      <ul>{recipes.map(recipe =>
+        <li key={recipe.sys.id}>
+          {recipe.fields.title}
+          <img src={`${recipe.fields.photo.fields.file.url}?h=400`} alt={recipe.fields.title} />
+        </li>
+      )
+      }</ul>
     </div>
   );
 }
