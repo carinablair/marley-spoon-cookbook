@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import { createClient } from 'contentful';
+import { RecipeListItem } from './components/RecipeListItem';
 
 function App() {
   const [recipes, setRecipes] = useState<any[]>([]);
@@ -25,8 +26,9 @@ function App() {
       <h2>Recipes</h2>
       <ul>{recipes.map(recipe =>
         <li key={recipe.sys.id}>
-          {recipe.fields.title}
-          <img src={`${recipe.fields.photo.fields.file.url}?h=400`} alt={recipe.fields.title} />
+          <RecipeListItem
+            title={recipe.fields.title}
+            imageUrl={recipe.fields.photo.fields.file.url} />
         </li>
       )
       }</ul>
