@@ -1,32 +1,25 @@
 import { useEffect, useState } from 'react';
-import { createClient } from 'contentful';
 import { RecipeListItem } from './RecipeListItem';
+import { getRecipes } from '../Api';
+import { RecipeSummary } from '../Types';
 
 function Cookbook() {
-    const [recipes, setRecipes] = useState<any[]>([]);
+    const [recipes, setRecipes] = useState<RecipeSummary[]>([]);
 
     useEffect(() => {
-        const client = createClient({
-            space: process.env.REACT_APP_SPACE_ID!,
-            environment: process.env.REACT_APP_ENVIRONMENT_ID,
-            accessToken: process.env.REACT_APP_ACCESS_TOKEN!
-        })
-
-        client.getEntries({
-            content_type: 'recipe'
-        })
-            .then((response) => setRecipes(response.items))
+        getRecipes()
+            .then((recipes) => setRecipes(recipes))
             .catch(console.error)
     }, [])
     return (
         <>
             <h2>Recipes</h2>
             <ul>{recipes.map(recipe =>
-                <li key={recipe.sys.id}>
+                <li key={recipe.id}>
                     <RecipeListItem
-                        recipeId={recipe.sys.id}
-                        title={recipe.fields.title}
-                        imageUrl={recipe.fields.photo.fields.file.url} />
+                        recipeId={recipe.id}
+                        title={recipe.title}
+                        imageUrl={recipe.imageUrl} />
                 </li>
             )
             }</ul>

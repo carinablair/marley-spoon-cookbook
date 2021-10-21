@@ -1,6 +1,8 @@
 import { createClient } from "contentful";
 import { useEffect, useState } from "react";
 import { RouteComponentProps } from "react-router-dom";
+import { getRecipe } from "../Api";
+import { RecipeDetails } from "../Types";
 
 interface RecipeProps {
     recipeId: string;
@@ -9,17 +11,11 @@ interface RecipeProps {
 function Recipe(props: RouteComponentProps<RecipeProps>) {
     let recipeId = props.match.params.recipeId;
 
-    const [recipe, setRecipe] = useState<any>(undefined);
+    const [recipe, setRecipe] = useState<RecipeDetails | undefined>(undefined);
 
     useEffect(() => {
-        const client = createClient({
-            space: process.env.REACT_APP_SPACE_ID!,
-            environment: process.env.REACT_APP_ENVIRONMENT_ID,
-            accessToken: process.env.REACT_APP_ACCESS_TOKEN!
-        })
-
-        client.getEntry(recipeId)
-            .then((response) => setRecipe(response))
+        getRecipe(recipeId)
+            .then((recipe) => setRecipe(recipe))
             .catch(console.error)
     }, [])
 
@@ -28,21 +24,21 @@ function Recipe(props: RouteComponentProps<RecipeProps>) {
     }
     return (
         <>
-            <span key='title'>{recipe.fields.title}</span>
-            <img src={`${recipe.fields.photo.fields.file.url}?h=400`}
-                alt={recipe.fields.title} />
-            {recipe.fields.tags?.map(
-                (tag: any) => (
+            <span key='title'>{recipe.title}</span>
+            <img src={`${recipe.imageUrl}?h=400`}
+                alt={recipe.title} />
+            {recipe.tags?.map(
+                (tag) => (
                     <span key='tag'>
-                        {tag.fields?.name}
+                        {tag}
                     </span>
                 ))
             }
             <span key='description'>
-                {recipe.fields.description}
+                {recipe.description}
             </span>
             <span key='chef'>
-                {recipe.fields?.chef?.fields?.name}
+                {recipe.chef}
             </span>
         </>
     )
