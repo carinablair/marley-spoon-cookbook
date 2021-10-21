@@ -1,11 +1,16 @@
+import { Link } from "react-router-dom";
+
 interface RecipeListItemProps {
+    recipeId: string;
     title: string;
     imageUrl: string;
 }
 
-export const RecipeListItem = ({ title, imageUrl }: RecipeListItemProps) => (
+export const RecipeListItem = ({ recipeId, title, imageUrl }: RecipeListItemProps) => (
     <>
-        <span>{title}</span>
-        <img src={`${imageUrl}?h=400`} alt={title} />
+        <Link to={`/recipe/${recipeId}`}>
+            <span>{title}</span>
+            <img src={`${imageUrl}?h=400`} alt={title} />
+        </Link>
     </>
 );
