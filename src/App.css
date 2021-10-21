@@ -1,38 +1,64 @@
+h1 {
+  font-weight: 400;
+  font-style: normal;
+  color: #222;
+  line-height: 1.4;
+  text-align: center;
+  font-family: "Avenir Next Cyr W00 Medium", Arial, sans-serif;
+  font-size: 28px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0;
+  max-width: 600px;
+}
+
+body {
+  background-color: #f6f6f6;
+}
+
+div.recipe-card {
+  width: 600px;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+div.recipe-card img {
+  height: 400px;
+  width: 600px;
+}
+
+div.recipe-card span {
+  display: block;
+  width: 500px;
+  padding: 10px 50px;
+  background: #ffffff;
+  font-weight: 400;
+  font-style: normal;
+  font-family: "Avenir Next Cyr W00 Medium", Arial, sans-serif;
+  font-size: 20px;
+  min-height: 46px;
+}
+a {
+  text-decoration: none;
+  color: #222;
+}
+a:visited {
+  text-decoration: none;
+  color: #222;
+}
+a:hover {
+  text-decoration: none;
+  color: #47d7ac;
+}
+a:focus {
+  text-decoration: none;
+  color: #47d7ac;
+}
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

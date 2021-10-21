@@ -9,8 +9,10 @@ interface RecipeListItemProps {
 export const RecipeListItem = ({ recipeId, title, imageUrl }: RecipeListItemProps) => (
     <>
         <Link to={`/recipe/${recipeId}`}>
-            <span>{title}</span>
-            <img src={`${imageUrl}?h=400`} alt={title} />
+            <div className='recipe-card'>
+                <img src={`${imageUrl}?h=400`} alt={title} />
+                <span>{title}</span>
+            </div>
         </Link>
     </>
 );
