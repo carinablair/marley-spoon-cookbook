@@ -1,10 +1,11 @@
+/* Cookbook styles */
 h1 {
   font-weight: 400;
   font-style: normal;
   color: #222;
   line-height: 1.4;
   text-align: center;
-  font-family: "Avenir Next Cyr W00 Medium", Arial, sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 28px;
 }
 
@@ -61,4 +62,48 @@ a:focus {
 
 .App {
   text-align: center;
+}
+/* Recipe styles */
+
+div.recipe-details {
+  background: #ffffff;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0;
+  max-width: 600px;
+}
+
+h2 {
+  font-weight: 400;
+  font-style: normal;
+  color: #222;
+  line-height: 1.4;
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  text-align: left;
+  padding-left: 10px;
+}
+
+span.tag {
+  font-weight: 400;
+  font-style: normal;
+  margin: 0 2px 5px 0;
+  background-color: #f6f6f6;
+  color: #716d6a;
+  font-size: 10px;
+  font-family: Arial, sans-serif;
+  letter-spacing: 1px;
+  line-height: 1.5;
+  padding: 5px;
+  text-transform: uppercase;
+}
+
+div.recipe-details p {
+  color: #222;
+  font-weight: 400;
+  line-height: 1.5;
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  text-align: left;
+  padding: 10px;
 }
