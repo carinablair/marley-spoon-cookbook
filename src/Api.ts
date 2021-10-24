@@ -23,7 +23,6 @@ export const getRecipes = async () : Promise<RecipeSummary[]> => {
 
 export const getRecipe = async (recipeId: string) : Promise<RecipeDetails> => {
  let recipe: any = await client.getEntry(recipeId);
-
  return {
      title: recipe.fields.title,
      imageUrl: recipe.fields.photo.fields.file.url,
@@ -31,7 +30,7 @@ export const getRecipe = async (recipeId: string) : Promise<RecipeDetails> => {
          tag.fields.name
          )),
      description: recipe.fields.description,
-     chef: recipe.fields.chef?.name
+     chef: recipe.fields.chef?.fields?.name
  }
 
 }

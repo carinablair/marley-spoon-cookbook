@@ -41,12 +41,12 @@ function Recipe(props: RouteComponentProps<RecipeProps>) {
                     </span>
                 ))
             }
-            <h2>What's cooking</h2>
+            <h2 key={`what's cooking`}>What's cooking</h2>
             <ReactMarkdown>
                 {recipe.description}
             </ReactMarkdown>
-            <span key='chef'>
-                {recipe.chef}
+            <span key='chef' className='chef'>
+                Recipe by: {recipe.chef || 'Mystery chef'}
             </span>
         </div>
     )

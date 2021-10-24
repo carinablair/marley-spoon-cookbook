@@ -70,7 +70,7 @@ div.recipe-details {
   background: #ffffff;
   margin: 0 auto;
   text-align: center;
-  padding: 0;
+  padding: 0 0 20px 0;
   max-width: 600px;
 }
 
@@ -107,4 +107,14 @@ div.recipe-details p {
   font-size: 1rem;
   text-align: left;
   padding: 10px;
+}
+
+div.recipe-details span.chef {
+  font-weight: 400;
+  line-height: 1.5;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #2d2926;
 }
