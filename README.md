@@ -1,46 +1,101 @@
-# Getting Started with Create React App
+# Cookbook
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Hi \*waves\* , this is my solution to the Marley Spoon Frontend Engineering Challenge.
 
-## Available Scripts
+## Running the app
 
-In the project directory, you can run:
+### Option one - with Docker installed
 
-### `yarn start`
+- [Docker](https://www.docker.com/products/docker-desktop)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+In terminal run the following command:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```sh
+docker-compose up --build
+```
 
-### `yarn test`
+This will run a production build of the app on [http://localhost:3000](http://localhost:3000)
+
+### Option two - with Node and Yarn installed
+
+- [Node 14](https://nodejs.org/en/)
+- [Yarn](https://yarnpkg.com/getting-started/install)
+
+In terminal run the following commands:
+
+```sh
+yarn
+yarn start
+```
+
+This will run the app in development mode on [http://localhost:3000](http://localhost:3000)
+
+## User Interface
+
+Cookbook is a two page app.  
+The first page is a list view of all the recipes. When you click on a recipe you're navigated to the second page which is a details view of a recipe.
+
+The recipe pages have the recipe id in the url to support easy sharing of the recipes with other people.
+
+### List view
+
+- Display a preview of all recipes, including:
+  - Title
+  - Image
+
+![List view](docs/listView.png)
+
+### Details view
+
+- Display all the data for a recipe:
+
+  - Title
+  - Image
+  - List of Tags
+  - Description (with Markdown rendered)
+  - Chef Name
+
+![Details view](docs/detailsView.png)
+
+## App architecture
+
+This is a React with TypeScript project that was set up using [Create React App](https://create-react-app.dev/docs/adding-typescript/)
+
+[Api.ts](src/Api.ts) is home to all the API calls made to the Content Delivery API
+
+[Cookbook.tsx](src/components/Cookbook.tsx) and [Recipe.tsx](src/components/Recipe.tsx) are the two main components
+
+[App.tsx](src/App.tsx) is the core component which handles routing between the two main components
+
+[App.css](src/App.css) holds all the styling for the app
+
+## Testing
+
+### Unit tests
+
+Run the following command to run the unit tests:
+
+```
+yarn test
+```
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+### Storybook
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+I used [Storybook](https://storybook.js.org/) to showcase the components in different states such as when an API call fails.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To launch Storybook run this command:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+yarn storybook
+```
 
-### `yarn eject`
+## Areas to improve
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- More unit tests!! - I have only written a few tests for the main app. Ideally I would add tests for every component.
+- Find a better home for the Contentful API keys to avoid committing them to the repo and passing them to the client.
+- Responsive design for different devices, screen sizes and browsers. I primarily built the app on my laptop, testing in Chrome and Firefox.
+- Error reporting to monitor client side errors
+- Split the css out into individual files for each component
