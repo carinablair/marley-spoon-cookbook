@@ -39,9 +39,10 @@ div.recipe-card span {
   background: #ffffff;
   font-weight: 400;
   font-style: normal;
-  font-family: "Avenir Next Cyr W00 Medium", Arial, sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 20px;
   min-height: 46px;
+  text-align: center;
 }
 a {
   text-decoration: none;

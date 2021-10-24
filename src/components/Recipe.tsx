@@ -12,16 +12,22 @@ interface RecipeProps {
 function Recipe(props: RouteComponentProps<RecipeProps>) {
     let recipeId = props.match.params.recipeId;
 
-    const [recipe, setRecipe] = useState<RecipeDetails | undefined>(undefined);
+    const [recipe, setRecipe] = useState<RecipeDetails | 'loading' | 'error'>('loading');
 
     useEffect(() => {
         getRecipe(recipeId)
             .then((recipe) => setRecipe(recipe))
-            .catch(console.error)
+            .catch((error) => {
+                console.error(error);
+                setRecipe('error')
+            })
     }, [])
 
-    if (recipe === undefined) {
+    if (recipe === 'loading') {
         return <span>Loading...</span>
+    }
+    if (recipe === 'error') {
+        return <span>Error loading recipe</span>
     }
     return (
         <div className='recipe-details'>
